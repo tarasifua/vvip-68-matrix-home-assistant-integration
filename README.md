@@ -4,7 +4,7 @@
 
 ### Внешний вид
 
-(https://github.com/tarasifua/vvip-68-matrix-home-assistant-integration/blob/main/screenshot/screenshot.png?raw=true)
+![](https://github.com/tarasifua/vvip-68-matrix-home-assistant-integration/blob/main/screenshot/screenshot.png?raw=true)
 
 ### Установка
 

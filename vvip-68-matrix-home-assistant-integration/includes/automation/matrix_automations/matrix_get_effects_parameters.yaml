@@ -3,9 +3,6 @@
     trigger:
       - platform: state
         entity_id: input_select.show_effects_settings
-    condition:
-      - condition: template
-        value_template: "{{ states('input_number.matrix_mode_number') != '-1.0' }}"
     action:
       - service: input_number.set_value
         data:

@@ -1,0 +1,72 @@
+###################################   МАТРИЦЯ   #################################
+
+# Логічне значення вимикача гірлянди
+  matrix_switch_state:
+    name: "Гірлянда на вікні"
+    
+  matrix_auto_mode:
+    name: "Автоматичний режим"
+    
+# Логічне значення випадкового режиму
+  matrix_random_mode:
+    name: "Випадковий порядок"
+
+###################################   ЕФЕКТИ   #################################
+
+  matrix_mode_use_in_demo:
+    name: "Викор. в демо-режимі"
+
+  matrix_mode_text_overlay:
+    name: "Текст поверх ефекту"
+
+  matrix_mode_clock_overlay:
+    name: "Годинник поверх ефекту"
+
+  matrix_mode_segments:
+    name: "Сегменти"
+
+
+  matrix_mode_use_in_demo_visibility:
+
+  matrix_mode_text_overlay_visibility:
+
+  matrix_mode_clock_overlay_visibility:
+
+
+  matrix_mode_contrast_visibility:
+
+  matrix_mode_color_visibility:
+
+  matrix_mode_speed_visibility:
+
+
+  matrix_mode_saturation_visibility:
+  
+  matrix_mode_variant_visibility:
+
+  matrix_mode_segments_visibility:
+
+###################################   БІЖУЧА СТРОКА   #################################
+
+  matrix_running_text_over_effects:
+    name: "Текст поверх ефектів"
+
+###################################   НАЛАШТУВАННЯ ГОДИННИКА   #################################
+
+  matrix_clock_ntp_sync:
+    name: "Синхронізація NTP"
+
+  matrix_clock_temperature:
+    name: "Температура з малим годинником"
+
+  matrix_clock_color_temperature_day:
+    name: "Температура кольором вдень"
+
+  matrix_clock_color_temperature_night:
+    name: "Температура кольором вночі"
+
+  matrix_clock_date:
+    name: "Дата з малим годинником"
+
+  matrix_clock_date_over_effects:
+    name: "Годинник поверх ефектів"

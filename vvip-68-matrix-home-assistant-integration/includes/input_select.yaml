@@ -1,0 +1,259 @@
+###################################   МАТРИЦЯ   #################################
+
+  matrix_weather:
+    name: Провайдер погоди для матриці
+    options:
+      - Вимкнено
+      - Yandex
+      - OpenWeatherMap
+    icon: mdi:weather-partly-snowy-rainy
+
+###################################   ЕФЕКТИ   #################################
+
+  show_effects_settings:
+    name: Налаштування ефекту
+    options:
+          - "---------"
+          - "Годинник"
+          - "Лампа"
+          - "Снігопад"
+          - "Кубик"
+          - "Веселка"
+          - "Пейнтбол"
+          - "Вогонь"
+          - "The Matrix"
+          - "Кульки"
+          - "Зорепад"
+          - "Конфетті"
+          - "Кольоровий шум"
+          - "Хмари"
+          - "Лава"
+          - "Плазма"
+          - "Райдужні переливи"
+          - "Смугасті переливи"
+          - "Зебра"
+          - "Шумлячий ліс"
+          - "Морський прибій"
+          - "Зміна кольору"
+          - "Світлячки"
+          - "Вир"
+          - "Циклон"
+          - "Мигання"
+          - "Північне сяйво"
+          - "Тіні"
+          - "Лабіринт"
+          - "Змійка"
+          - "Тетріс"
+          - "Арканоїд"
+          - "Палітра"
+          - "Спектрум"
+          - "Синуси"
+          - "Вишиванка"
+          - "Дощ"
+          - "Камін"
+          - "Водоспад"
+          - "Стрілки"
+          - "Анімація"
+          - "Погода"
+          - "Життя"
+          - "Узори"
+          - "Світанок"
+    initial: "---------"
+    icon: mdi:format-list-checkbox
+
+  matrix_rainbow_effect_variant:
+    name: Режим
+    options:
+      - Випадково
+      - Вертикально
+      - Горизонтально
+      - Діагонально
+      - По колу
+    icon: mdi:timeline-check-outline
+
+  matrix_arrows_effect_variant:
+    name: Режим
+    options:
+      - Випадково
+      - 1-центр
+      - 2-центр
+      - 4-центр
+      - 2-зміщення
+      - 4-зміщення
+    icon: mdi:timeline-check-outline
+
+  matrix_animation_effect_variant:
+    name: Режим
+    options:
+      - Випадково
+      - Маріо
+    icon: mdi:timeline-check-outline
+
+  matrix_patterns_effect_variant:
+    name: Режим
+    options:
+      - Випадково
+      - Зигзаг
+      - Ноти
+      - Ромб
+      - Серце
+      - Ялинка
+      - Клітка
+      - Смайлик
+      - Зигзаг 2
+      - Полоси
+      - Хвилі
+      - Луска
+      - Портьєра
+      - Плетінка
+      - Сніжинка
+      - Квадратики
+      - Греція
+      - Круги
+      - Рулет
+      - Узор 1
+      - Узор 2
+      - Узор 3
+      - Узор 4
+      - Узор 5
+      - Узор 6
+      - Узор 7
+      - Узор 8
+      - Узор 9
+      - Узор 10
+      - Узор 11
+      - Узор 12
+      - Узор 13
+      - Узор 14
+    icon: mdi:timeline-check-outline
+
+###################################   БІЖУЧА СТРОКА   #################################
+
+  matrix_running_text_color:
+    name: Колір тексту
+    options:
+      - Однотонний
+      - Веселка
+      - Кожна буква своїм кольором
+    icon: mdi:timeline-check-outline
+
+  matrix_running_text_string:
+    name: Строка
+    options:
+      - "---------"
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - A
+      - B
+      - C
+      - D
+      - E
+      - F
+      - G
+      - H
+      - I
+      - J
+      - K
+      - L
+      - M
+      - N
+      - O
+      - P
+      - Q
+      - R
+      - S
+      - T
+      - U
+      - V
+      - W
+      - X
+      - Y
+      - Z
+    icon: mdi:format-list-bulleted-square
+
+###################################   НАЛАШТУВАННЯ ГОДИННИКА   #################################
+
+  matrix_clock_size:
+    name: Розмір годинника
+    options:
+      - Авто
+      - Малий
+      - Великий
+    icon: mdi:timeline-check-outline
+
+  matrix_clock_direction:
+    name: Орієнтація годинника
+    options:
+      - Горизонтально
+      - Вертикально
+    icon: mdi:timeline-check-outline
+
+  matrix_clock_color:
+    name: Колір годинника
+    options:
+      - Однотонний
+      - Кожна цифра своїм кольором
+      - Години, точки, хвилини
+    icon: mdi:timeline-check-outline
+
+  matrix_clock_night_color:
+    name: Колір нічного годинника
+    options:
+      - Червоний
+      - Зелений
+      - Синій
+      - Бірюзовий
+      - Рожевий
+      - Жовтий
+      - Білий
+    icon: mdi:timeline-check-outline
+
+###################################   РЕЖИМИ ПО ЧАСУ   #################################
+
+  matrix_time_mode_1_action:
+    name: Дія
+    options:
+      - Нічого
+      - Вимкнути матрицю
+      - Нічний годинник
+      - Демо-режим
+      - Годинник
+    icon: mdi:timeline-check-outline
+
+  matrix_time_mode_2_action:
+    name: Дія
+    options:
+      - Нічого
+      - Вимкнути матрицю
+      - Нічний годинник
+      - Демо-режим
+      - Годинник
+    icon: mdi:timeline-check-outline
+
+  matrix_time_mode_3_action:
+    name: Дія
+    options:
+      - Нічого
+      - Вимкнути матрицю
+      - Нічний годинник
+      - Демо-режим
+      - Годинник
+    icon: mdi:timeline-check-outline
+
+  matrix_time_mode_4_action:
+    name: Дія
+    options:
+      - Нічого
+      - Вимкнути матрицю
+      - Нічний годинник
+      - Демо-режим
+      - Годинник
+    icon: mdi:timeline-check-outline

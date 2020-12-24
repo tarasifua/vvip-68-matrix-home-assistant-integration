@@ -1,0 +1,945 @@
+title: Home Assistant - сервер
+
+views:
+
+  - title: Освітлення
+    icon: mdi:lightbulb-group
+          
+    cards:
+      - type: button
+        entity: input_boolean.matrix_switch_state
+        icon: mdi:string-lights
+        name: "Гірлянда"
+
+  - title: Гірлянда
+    icon: mdi:string-lights
+    
+    cards:
+          - type: entities
+            title: "Загальні"
+            show_header_toggle: false
+            entities:
+              - entity: input_boolean.matrix_auto_mode
+              - entity: input_boolean.matrix_random_mode
+                icon: 'mdi:shuffle-variant'
+              - type: custom:numberbox-card
+                entity: input_number.matrix_brightness
+                icon: 'mdi:brightness-6'
+              - type: custom:numberbox-card
+                entity: input_number.matrix_current_limit
+                unit: " мА."
+                icon: 'mdi:current-ac'
+              - type: custom:numberbox-card
+                entity: input_number.matrix_effect_duration
+                unit: " сек."
+                icon: 'mdi:timer-outline'
+              - type: custom:numberbox-card
+                entity: input_number.matrix_auto_mode_in
+                unit: " хв."
+                icon: 'mdi:timer-outline'
+
+          - type: entities
+            title: "Погода"
+            show_header_toggle: false
+            entities:
+              - entity: input_select.matrix_weather
+              - entity: input_text.matrix_yandex_region
+                icon: 'mdi:map-marker'
+              - entity: input_text.matrix_owm_region
+                icon: 'mdi:map-marker'
+              - type: custom:numberbox-card
+                entity: input_number.matrix_weather_update_period
+                unit: " хв."
+                icon: 'mdi:timer-outline'
+
+          - type: vertical-stack
+            cards:
+              - type: entities
+                title: "Годинник"
+                show_header_toggle: false
+                entities:
+                  - entity: script.matrix_set_time
+                  - entity: input_boolean.matrix_clock_ntp_sync
+                  - entity: input_text.matrix_clock_ntp_server
+                  - type: custom:numberbox-card
+                    entity: input_number.matrix_clock_ntp_sync_period
+                    unit: " хв."
+                    icon: 'mdi:timer-outline'
+                  - type: custom:numberbox-card
+                    entity: input_number.matrix_clock_timezone
+                    icon: 'mdi:map-clock-outline'
+                  - type: divider
+                    style:
+                      height: 3px
+                  - entity: input_select.matrix_clock_size
+                  - entity: input_boolean.matrix_clock_temperature
+                  - entity: input_boolean.matrix_clock_color_temperature_day
+                  - entity: input_boolean.matrix_clock_color_temperature_night
+                  - entity: input_boolean.matrix_clock_date
+                  - type: section
+                    label: "Показувати дату..."
+                  - type: custom:numberbox-card
+                    entity: input_number.matrix_clock_date_duration
+                    unit: " сек."
+                    icon: 'mdi:timer-outline'
+                  - type: custom:numberbox-card
+                    entity: input_number.matrix_clock_date_interval
+                    unit: " сек."
+                    icon: 'mdi:timer-outline'
+                  - type: divider
+                    style: 
+                      height: 3px
+                  - entity: input_boolean.matrix_clock_date_over_effects
+                  - entity: input_select.matrix_clock_direction
+                  - entity: input_select.matrix_clock_color
+                  - entity: input_select.matrix_clock_night_color
+                  - type: custom:numberbox-card
+                    entity: input_number.matrix_clock_speed
+                    icon: 'mdi:speedometer'
+
+
+          - type: vertical-stack
+            cards:
+              - type: entities
+                title: "Біжуча строка"
+                show_header_toggle: false
+                entities:
+                  - entity: input_boolean.matrix_running_text_over_effects
+                  - type: custom:numberbox-card
+                    entity: input_number.matrix_running_text_interval
+                    unit: " сек."
+                    icon: 'mdi:timer-outline'
+                  - type: custom:numberbox-card
+                    entity: input_number.matrix_running_text_speed
+                    icon: 'mdi:speedometer'
+                  - entity: input_select.matrix_running_text_color
+              - type: conditional
+                conditions:
+                  - entity: input_select.matrix_running_text_color
+                    state: "Однотонний"
+                card:
+                  type: entities
+                  title: "Колір тексту"
+                  show_header_toggle: false
+                  entities:
+                  - type: custom:numberbox-card
+                    entity: input_number.matrix_running_text_color_red
+                    icon: 'mdi:alpha-r-box-outline'
+                    speed: 100
+                  - type: custom:numberbox-card
+                    entity: input_number.matrix_running_text_color_green
+                    icon: 'mdi:alpha-g-box-outline'
+                    speed: 100
+                  - type: custom:numberbox-card
+                    entity: input_number.matrix_running_text_color_blue
+                    icon: 'mdi:alpha-b-box-outline'
+                    speed: 100
+              - type: entities
+                title: "Текст строки"
+                show_header_toggle: false
+                entities:
+                  - entity: input_select.matrix_running_text_string
+              - type: conditional
+                conditions:
+                  - entity: input_select.matrix_running_text_string
+                    state_not: "---------"
+                card:
+                  type: entities
+                  entities:
+                    - entity: input_text.matrix_running_text_string_contents
+                    - entity: script.matrix_test_running_text
+
+
+          - type: entities
+            title: "Режими по часу"
+            show_header_toggle: false
+            entities:
+              - type: section
+                label: "Режим 1"
+              - type: custom:numberbox-card
+                entity: input_number.matrix_time_mode_1_hours
+                unit: " год."
+                icon: 'mdi:clock-outline'
+              - type: custom:numberbox-card
+                entity: input_number.matrix_time_mode_1_minutes
+                unit: " хв."
+                icon: 'mdi:clock-outline'
+              - entity: input_select.matrix_time_mode_1_action
+              - type: section
+                label: "Режим 2"
+              - type: custom:numberbox-card
+                entity: input_number.matrix_time_mode_2_hours
+                unit: " год."
+                icon: 'mdi:clock-outline'
+              - type: custom:numberbox-card
+                entity: input_number.matrix_time_mode_2_minutes
+                unit: " хв."
+                icon: 'mdi:clock-outline'
+              - entity: input_select.matrix_time_mode_2_action
+              - type: section
+                label: "Режим 3"
+              - type: custom:numberbox-card
+                entity: input_number.matrix_time_mode_3_hours
+                unit: " год."
+                icon: 'mdi:clock-outline'
+              - type: custom:numberbox-card
+                entity: input_number.matrix_time_mode_3_minutes
+                unit: " хв."
+                icon: 'mdi:clock-outline'
+              - entity: input_select.matrix_time_mode_3_action
+              - type: section
+                label: "Режим 4"
+              - type: custom:numberbox-card
+                entity: input_number.matrix_time_mode_4_hours
+                unit: " год."
+                icon: 'mdi:clock-outline'
+              - type: custom:numberbox-card
+                entity: input_number.matrix_time_mode_4_minutes
+                unit: " хв."
+                icon: 'mdi:clock-outline'
+              - entity: input_select.matrix_time_mode_4_action
+
+                
+          - type: vertical-stack
+            cards:
+              - type: vertical-stack
+                cards:
+
+                  - type: conditional
+                    conditions:
+                      - entity: input_boolean.matrix_switch_state
+                        state: "on"
+                    card:
+                      type: entities
+                      title: "Ефекти"
+                      show_header_toggle: false
+                      entities:
+                        - entity: input_select.show_effects_settings
+
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.show_effects_settings
+                        state_not: "---------"
+                      - entity: input_boolean.matrix_mode_use_in_demo_visibility
+                        state: "on"
+                    card:
+                      type: entities
+                      entities:
+                        - entity: input_boolean.matrix_mode_use_in_demo
+
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.show_effects_settings
+                        state_not: "---------"
+                      - entity: input_boolean.matrix_mode_text_overlay_visibility
+                        state: "on"
+                    card:
+                      type: entities
+                      entities:
+                          - entity: input_boolean.matrix_mode_text_overlay
+
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.show_effects_settings
+                        state_not: "---------"
+                      - entity: input_boolean.matrix_mode_clock_overlay_visibility
+                        state: "on"
+                    card:
+                      type: entities
+                      entities:
+                          - entity: input_boolean.matrix_mode_clock_overlay
+
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.show_effects_settings
+                        state_not: "---------"
+                      - entity: input_boolean.matrix_mode_contrast_visibility
+                        state: "on"
+                    card:
+                      type: entities
+                      entities:
+                          - entity: input_number.matrix_mode_contrast
+
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.show_effects_settings
+                        state_not: "---------"
+                      - entity: input_number.matrix_mode_number
+                        state_not: "1.0"
+                      - entity: input_boolean.matrix_mode_speed_visibility
+                        state: "on"
+                    card:
+                      type: entities
+                      entities:
+                          - entity: input_number.matrix_mode_speed
+
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.show_effects_settings
+                        state_not: "---------"
+                      - entity: input_number.matrix_mode_number
+                        state: "1.0"
+                      - entity: input_boolean.matrix_mode_color_visibility
+                        state: "on"
+                    card:
+                      type: entities
+                      entities:
+                          - entity: input_number.matrix_mode_color
+
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.show_effects_settings
+                        state_not: "---------"
+                      - entity: input_number.matrix_mode_number
+                        state_not: "1.0"
+                      - entity: input_boolean.matrix_mode_variant_visibility
+                        state: "on"
+                    card:
+                      type: entities
+                      entities:
+                          - entity: input_number.matrix_mode_variant
+
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.show_effects_settings
+                        state_not: "---------"
+                      - entity: input_number.matrix_mode_number
+                        state: "1.0"
+                      - entity: input_boolean.matrix_mode_saturation_visibility
+                        state: "on"
+                    card:
+                      type: entities
+                      entities:
+                          - entity: input_number.matrix_mode_saturation
+
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.show_effects_settings
+                        state: "Веселка"
+                    card:
+                      type: entities
+                      entities:
+                          - entity: input_select.matrix_rainbow_effect_variant
+
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.show_effects_settings
+                        state: "Стрілки"
+                    card:
+                      type: entities
+                      entities:
+                          - entity: input_select.matrix_arrows_effect_variant
+
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.show_effects_settings
+                        state: "Анімація"
+                    card:
+                      type: entities
+                      entities:
+                          - entity: input_select.matrix_animation_effect_variant
+
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.show_effects_settings
+                        state: "Узори"
+                    card:
+                      type: entities
+                      entities:
+                          - entity: input_select.matrix_patterns_effect_variant
+
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.show_effects_settings
+                        state_not: "---------"
+                      - entity: input_boolean.matrix_mode_segments_visibility
+                        state: "on"
+                    card:
+                      type: entities
+                      entities:
+                          - entity: input_boolean.matrix_mode_segments
+
+
+
+
+                #     entities:
+                #       - entity: input_select.show_effects_settings
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Годинник"
+                #     card:
+                #       type: entities
+                #       entities:
+                #           - entity: input_boolean.matrix_mode_clock_use_in_demo
+                #           - entity: input_number.matrix_mode_clock_color
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Лампа"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_lamp_use_in_demo
+                #         - entity: input_boolean.matrix_mode_lamp_text_overlay
+                #         - entity: input_boolean.matrix_mode_lamp_clock_overlay
+                #         - entity: input_number.matrix_mode_lamp_contrast
+                #         - entity: input_number.matrix_mode_lamp_color
+                #         - entity: input_number.matrix_mode_lamp_saturation
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Снігопад"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_snowfall_use_in_demo
+                #         - entity: input_boolean.matrix_mode_snowfall_text_overlay
+                #         - entity: input_boolean.matrix_mode_snowfall_clock_overlay
+                #         - entity: input_number.matrix_mode_snowfall_contrast
+                #         - entity: input_number.matrix_mode_snowfall_speed
+                #         - entity: input_number.matrix_mode_snowfall_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Кубик"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_cube_use_in_demo
+                #         - entity: input_boolean.matrix_mode_cube_text_overlay
+                #         - entity: input_boolean.matrix_mode_cube_clock_overlay
+                #         - entity: input_number.matrix_mode_cube_contrast
+                #         - entity: input_number.matrix_mode_cube_speed
+                #         - entity: input_number.matrix_mode_cube_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Веселка"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_rainbow_use_in_demo
+                #         - entity: input_boolean.matrix_mode_rainbow_text_overlay
+                #         - entity: input_boolean.matrix_mode_rainbow_clock_overlay
+                #         - entity: input_number.matrix_mode_rainbow_contrast
+                #         - entity: input_number.matrix_mode_rainbow_speed
+                #         - entity: input_number.matrix_mode_rainbow_variant
+                #         - entity: input_select.matrix_rainbow_effect_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Пейнтбол"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_paintball_use_in_demo
+                #         - entity: input_boolean.matrix_mode_paintball_text_overlay
+                #         - entity: input_boolean.matrix_mode_paintball_clock_overlay
+                #         - entity: input_number.matrix_mode_paintball_contrast
+                #         - entity: input_number.matrix_mode_paintball_speed
+                #         - entity: input_number.matrix_mode_paintball_variant
+                #         - entity: input_boolean.matrix_mode_paintball_segments
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Вогонь"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_fire_use_in_demo
+                #         - entity: input_boolean.matrix_mode_fire_text_overlay
+                #         - entity: input_boolean.matrix_mode_fire_clock_overlay
+                #         - entity: input_number.matrix_mode_fire_contrast
+                #         - entity: input_number.matrix_mode_fire_speed
+                #         - entity: input_number.matrix_mode_fire_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "The Matrix"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_thematrix_use_in_demo
+                #         - entity: input_boolean.matrix_mode_thematrix_text_overlay
+                #         - entity: input_boolean.matrix_mode_thematrix_clock_overlay
+                #         - entity: input_number.matrix_mode_thematrix_contrast
+                #         - entity: input_number.matrix_mode_thematrix_speed
+                #         - entity: input_number.matrix_mode_thematrix_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Кульки"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_balls_use_in_demo
+                #         - entity: input_boolean.matrix_mode_balls_text_overlay
+                #         - entity: input_boolean.matrix_mode_balls_clock_overlay
+                #         - entity: input_number.matrix_mode_balls_contrast
+                #         - entity: input_number.matrix_mode_balls_speed
+                #         - entity: input_number.matrix_mode_balls_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Зорепад"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_starfall_use_in_demo
+                #         - entity: input_boolean.matrix_mode_starfall_text_overlay
+                #         - entity: input_boolean.matrix_mode_starfall_clock_overlay
+                #         - entity: input_number.matrix_mode_starfall_contrast
+                #         - entity: input_number.matrix_mode_starfall_speed
+                #         - entity: input_number.matrix_mode_starfall_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Конфетті"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_konfetti_use_in_demo
+                #         - entity: input_boolean.matrix_mode_konfetti_text_overlay
+                #         - entity: input_boolean.matrix_mode_konfetti_clock_overlay
+                #         - entity: input_number.matrix_mode_konfetti_contrast
+                #         - entity: input_number.matrix_mode_konfetti_speed
+                #         - entity: input_number.matrix_mode_konfetti_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Кольоровий шум"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_color_noise_use_in_demo
+                #         - entity: input_boolean.matrix_mode_color_noise_text_overlay
+                #         - entity: input_boolean.matrix_mode_color_noise_clock_overlay
+                #         - entity: input_number.matrix_mode_color_noise_contrast
+                #         - entity: input_number.matrix_mode_color_noise_speed
+                #         - entity: input_number.matrix_mode_color_noise_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Хмари"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_clouds_use_in_demo
+                #         - entity: input_boolean.matrix_mode_clouds_text_overlay
+                #         - entity: input_boolean.matrix_mode_clouds_clock_overlay
+                #         - entity: input_number.matrix_mode_clouds_contrast
+                #         - entity: input_number.matrix_mode_clouds_speed
+                #         - entity: input_number.matrix_mode_clouds_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Лава"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_lava_use_in_demo
+                #         - entity: input_boolean.matrix_mode_lava_text_overlay
+                #         - entity: input_boolean.matrix_mode_lava_clock_overlay
+                #         - entity: input_number.matrix_mode_lava_contrast
+                #         - entity: input_number.matrix_mode_lava_speed
+                #         - entity: input_number.matrix_mode_lava_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Плазма"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_plasma_use_in_demo
+                #         - entity: input_boolean.matrix_mode_plasma_text_overlay
+                #         - entity: input_boolean.matrix_mode_plasma_clock_overlay
+                #         - entity: input_number.matrix_mode_plasma_contrast
+                #         - entity: input_number.matrix_mode_plasma_speed
+                #         - entity: input_number.matrix_mode_plasma_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Райдужні переливи"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_rainbow_overflow_use_in_demo
+                #         - entity: input_boolean.matrix_mode_rainbow_overflow_text_overlay
+                #         - entity: input_boolean.matrix_mode_rainbow_overflow_clock_overlay
+                #         - entity: input_number.matrix_mode_rainbow_overflow_contrast
+                #         - entity: input_number.matrix_mode_rainbow_overflow_speed
+                #         - entity: input_number.matrix_mode_rainbow_overflow_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Смугасті переливи"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_stripe_overflow_use_in_demo
+                #         - entity: input_boolean.matrix_mode_stripe_overflow_text_overlay
+                #         - entity: input_boolean.matrix_mode_stripe_overflow_clock_overlay
+                #         - entity: input_number.matrix_mode_stripe_overflow_contrast
+                #         - entity: input_number.matrix_mode_stripe_overflow_speed
+                #         - entity: input_number.matrix_mode_stripe_overflow_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Зебра"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_zebra_use_in_demo
+                #         - entity: input_boolean.matrix_mode_zebra_text_overlay
+                #         - entity: input_boolean.matrix_mode_zebra_clock_overlay
+                #         - entity: input_number.matrix_mode_zebra_contrast
+                #         - entity: input_number.matrix_mode_zebra_speed
+                #         - entity: input_number.matrix_mode_zebra_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Шумлячий ліс"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_noisy_forest_use_in_demo
+                #         - entity: input_boolean.matrix_mode_noisy_forest_text_overlay
+                #         - entity: input_boolean.matrix_mode_noisy_forest_clock_overlay
+                #         - entity: input_number.matrix_mode_noisy_forest_contrast
+                #         - entity: input_number.matrix_mode_noisy_forest_speed
+                #         - entity: input_number.matrix_mode_noisy_forest_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Морський прибій"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_tidal_bore_use_in_demo
+                #         - entity: input_boolean.matrix_mode_tidal_bore_text_overlay
+                #         - entity: input_boolean.matrix_mode_tidal_bore_clock_overlay
+                #         - entity: input_number.matrix_mode_tidal_bore_contrast
+                #         - entity: input_number.matrix_mode_tidal_bore_speed
+                #         - entity: input_number.matrix_mode_tidal_bore_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Зміна кольору"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_colors_change_use_in_demo
+                #         - entity: input_boolean.matrix_mode_colors_change_text_overlay
+                #         - entity: input_boolean.matrix_mode_colors_change_clock_overlay
+                #         - entity: input_number.matrix_mode_colors_change_contrast
+                #         - entity: input_number.matrix_mode_colors_change_speed
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Світлячки"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_fireflies_use_in_demo
+                #         - entity: input_boolean.matrix_mode_fireflies_text_overlay
+                #         - entity: input_boolean.matrix_mode_fireflies_clock_overlay
+                #         - entity: input_number.matrix_mode_fireflies_contrast
+                #         - entity: input_number.matrix_mode_fireflies_speed
+                #         - entity: input_number.matrix_mode_fireflies_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Вир"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_maelstrom_use_in_demo
+                #         - entity: input_boolean.matrix_mode_maelstrom_text_overlay
+                #         - entity: input_boolean.matrix_mode_maelstrom_clock_overlay
+                #         - entity: input_number.matrix_mode_maelstrom_contrast
+                #         - entity: input_number.matrix_mode_maelstrom_speed
+                #         - entity: input_boolean.matrix_mode_maelstrom_segments
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Циклон"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_cyclone_use_in_demo
+                #         - entity: input_boolean.matrix_mode_cyclone_text_overlay
+                #         - entity: input_boolean.matrix_mode_cyclone_clock_overlay
+                #         - entity: input_number.matrix_mode_cyclone_contrast
+                #         - entity: input_number.matrix_mode_cyclone_speed
+                #         - entity: input_number.matrix_mode_cyclone_variant
+                #         - entity: input_boolean.matrix_mode_cyclone_segments
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Мигання"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_blinking_use_in_demo
+                #         - entity: input_boolean.matrix_mode_blinking_text_overlay
+                #         - entity: input_boolean.matrix_mode_blinking_clock_overlay
+                #         - entity: input_number.matrix_mode_blinking_contrast
+                #         - entity: input_number.matrix_mode_blinking_speed
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Північне сяйво"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_north_light_use_in_demo
+                #         - entity: input_boolean.matrix_mode_north_light_text_overlay
+                #         - entity: input_boolean.matrix_mode_north_light_clock_overlay
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Тіні"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_shadows_use_in_demo
+                #         - entity: input_boolean.matrix_mode_shadows_text_overlay
+                #         - entity: input_boolean.matrix_mode_shadows_clock_overlay
+                #         - entity: input_number.matrix_mode_shadows_contrast
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Лабіринт"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_labirint_use_in_demo
+                #         - entity: input_number.matrix_mode_labirint_speed
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Змійка"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_snake_use_in_demo
+                #         - entity: input_number.matrix_mode_snake_speed
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Тетріс"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_tetris_use_in_demo
+                #         - entity: input_number.matrix_mode_tetris_speed
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Арканоїд"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_arkanoid_use_in_demo
+                #         - entity: input_number.matrix_mode_arkanoid_speed
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Палітра"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_palette_use_in_demo
+                #         - entity: input_boolean.matrix_mode_palette_text_overlay
+                #         - entity: input_boolean.matrix_mode_palette_clock_overlay
+                #         - entity: input_number.matrix_mode_palette_contrast
+                #         - entity: input_number.matrix_mode_palette_speed
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Спектрум"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_spectrum_use_in_demo
+                #         - entity: input_boolean.matrix_mode_spectrum_text_overlay
+                #         - entity: input_boolean.matrix_mode_spectrum_clock_overlay
+                #         - entity: input_number.matrix_mode_spectrum_contrast
+                #         - entity: input_number.matrix_mode_spectrum_speed
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Синуси"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_sinus_use_in_demo
+                #         - entity: input_boolean.matrix_mode_sinus_text_overlay
+                #         - entity: input_boolean.matrix_mode_sinus_clock_overlay
+                #         - entity: input_number.matrix_mode_sinus_contrast
+                #         - entity: input_number.matrix_mode_sinus_speed
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Вишиванка"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_embroidery_use_in_demo
+                #         - entity: input_boolean.matrix_mode_embroidery_text_overlay
+                #         - entity: input_boolean.matrix_mode_embroidery_clock_overlay
+                #         - entity: input_number.matrix_mode_embroidery_contrast
+                #         - entity: input_number.matrix_mode_embroidery_speed
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Дощ"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_rain_use_in_demo
+                #         - entity: input_boolean.matrix_mode_rain_text_overlay
+                #         - entity: input_boolean.matrix_mode_rain_clock_overlay
+                #         - entity: input_number.matrix_mode_rain_contrast
+                #         - entity: input_number.matrix_mode_rain_speed
+                #         - entity: input_number.matrix_mode_rain_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Камін"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_fireplace_use_in_demo
+                #         - entity: input_boolean.matrix_mode_fireplace_text_overlay
+                #         - entity: input_boolean.matrix_mode_fireplace_clock_overlay
+                #         - entity: input_number.matrix_mode_fireplace_contrast
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Водоспад"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_waterfall_use_in_demo
+                #         - entity: input_boolean.matrix_mode_waterfall_text_overlay
+                #         - entity: input_boolean.matrix_mode_waterfall_clock_overlay
+                #         - entity: input_number.matrix_mode_waterfall_contrast
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Стрілки"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_arrows_use_in_demo
+                #         - entity: input_boolean.matrix_mode_arrows_text_overlay
+                #         - entity: input_boolean.matrix_mode_arrows_clock_overlay
+                #         - entity: input_number.matrix_mode_rainbow_contrast
+                #         - entity: input_number.matrix_mode_rainbow_speed
+                #         - entity: input_select.matrix_arrows_effect_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Анімація"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_animation_use_in_demo
+                #         - entity: input_boolean.matrix_mode_animation_text_overlay
+                #         - entity: input_boolean.matrix_mode_animation_clock_overlay
+                #         - entity: input_number.matrix_mode_rainbow_contrast
+                #         - entity: input_select.matrix_animation_effect_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Погода"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_weather_use_in_demo
+                #         - entity: input_boolean.matrix_mode_weather_text_overlay
+                #         - entity: input_boolean.matrix_mode_weather_clock_overlay
+                #         - entity: input_number.matrix_mode_weather_contrast
+                #         - entity: input_number.matrix_mode_weather_speed
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Життя"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_life_use_in_demo
+                #         - entity: input_boolean.matrix_mode_life_text_overlay
+                #         - entity: input_boolean.matrix_mode_life_clock_overlay
+                #         - entity: input_number.matrix_mode_life_contrast
+                #         - entity: input_number.matrix_mode_life_speed
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Узори"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_patterns_use_in_demo
+                #         - entity: input_boolean.matrix_mode_patterns_text_overlay
+                #         - entity: input_boolean.matrix_mode_patterns_clock_overlay
+                #         - entity: input_number.matrix_mode_patterns_contrast
+                #         - entity: input_number.matrix_mode_patterns_speed
+                #         - entity: input_select.matrix_patterns_effect_variant
+
+                #   - type: conditional
+                #     conditions:
+                #       - entity: input_select.show_effects_settings
+                #         state: "Світанок"
+                #     card:
+                #       type: entities
+                #       entities:
+                #         - entity: input_boolean.matrix_mode_dawn_use_in_demo
+                #         - entity: input_boolean.matrix_mode_dawn_text_overlay
+                #         - entity: input_boolean.matrix_mode_dawn_clock_overlay
+                #         - entity: input_number.matrix_mode_dawn_speed

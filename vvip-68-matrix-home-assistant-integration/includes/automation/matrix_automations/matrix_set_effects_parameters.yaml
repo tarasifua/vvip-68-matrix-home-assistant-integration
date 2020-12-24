@@ -1,0 +1,322 @@
+  - alias: set_matrix_mode_use_in_demo
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_boolean.matrix_mode_use_in_demo
+    condition:
+      - condition: template
+        value_template: "{{ states('input_number.matrix_mode_number') != '-1.0' }}"
+      - condition: template
+        value_template: "{{ states('input_boolean.matrix_mode_use_in_demo_visibility') == 'on' }}"
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: WiFiPanel-0/cmd
+          payload_template: >
+            {%- if states('input_boolean.matrix_mode_use_in_demo') == 'on' -%}
+            $8 2 {{ states('input_number.matrix_mode_number') | int }} 1;
+            {%- else -%}
+            $8 2 {{ states('input_number.matrix_mode_number') | int }} 0;
+            {%- endif -%}
+
+  - alias: set_matrix_mode_text_overlay
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_boolean.matrix_mode_text_overlay
+    condition:
+      - condition: template
+        value_template: "{{ states('input_number.matrix_mode_number') != '-1.0' }}"
+      - condition: template
+        value_template: "{{ states('input_boolean.matrix_mode_text_overlay_visibility') == 'on' }}"
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: WiFiPanel-0/cmd
+          payload_template: >
+            {%- if states('input_boolean.matrix_mode_text_overlay') == 'on' -%}
+            $8 4 {{ states('input_number.matrix_mode_number') | int }} 1;
+            {%- else -%}
+            $8 4 {{ states('input_number.matrix_mode_number') | int }} 0;
+            {%- endif -%}
+
+  - alias: set_matrix_mode_clock_overlay
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_boolean.matrix_mode_clock_overlay
+    condition:
+      - condition: template
+        value_template: "{{ states('input_number.matrix_mode_number') != '-1.0' }}"
+      - condition: template
+        value_template: "{{ states('input_boolean.matrix_mode_clock_overlay_visibility') == 'on' }}"
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: WiFiPanel-0/cmd
+          payload_template: >
+            {% if states('input_boolean.matrix_mode_clock_overlay') == 'on' %}
+            $8 5 {{ states('input_number.matrix_mode_number') | int }} 1;
+            {% else %}
+            $8 5 {{ states('input_number.matrix_mode_number') | int }} 0;
+            {% endif %}
+
+  - alias: set_matrix_mode_contrast
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_number.matrix_mode_contrast
+    condition:
+      - condition: template
+        value_template: "{{ states('input_number.matrix_mode_number') != '-1.0' }}"
+      - condition: template
+        value_template: "{{ states('input_boolean.matrix_mode_contrast_visibility') == 'on' }}"
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: WiFiPanel-0/cmd
+          payload_template: >
+            $8 6 {{ states('input_number.matrix_mode_number') | int }} {{ states('input_number.matrix_mode_contrast')|int }};
+
+  - alias: set_matrix_mode_speed
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_number.matrix_mode_speed
+    condition:
+      - condition: template
+        value_template: "{{ states('input_number.matrix_mode_number') != '-1.0' }}"
+      - condition: template
+        value_template: "{{ states('input_boolean.matrix_mode_speed_visibility') == 'on' }}"
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: WiFiPanel-0/cmd
+          payload_template: >
+            $15 {{ states('input_number.matrix_mode_speed')|int }} 0;
+
+  - alias: set_matrix_mode_variant
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_number.matrix_mode_variant
+    condition:
+      - condition: template
+        value_template: "{{ states('input_number.matrix_mode_number') != '-1.0' }}"
+      - condition: template
+        value_template: "{{ states('input_boolean.matrix_mode_variant_visibility') == 'on' }}"
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: WiFiPanel-0/cmd
+          payload_template: >
+            $8 1 {{ states('input_number.matrix_mode_number') | int }} {{ states('input_number.matrix_mode_variant')|int }};
+
+  - alias: set_matrix_mode_color
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_number.matrix_mode_color
+    condition:
+      - condition: template
+        value_template: "{{ states('input_number.matrix_mode_number') != '-1.0' }}"
+      - condition: template
+        value_template: "{{ states('input_boolean.matrix_mode_color_visibility') == 'on' }}"
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: WiFiPanel-0/cmd
+          payload_template: >
+            $15 {{ states('input_number.matrix_mode_color')|int }} 0;
+
+  - alias: set_matrix_mode_saturation
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_number.matrix_mode_saturation
+    condition:
+      - condition: template
+        value_template: "{{ states('input_number.matrix_mode_number') != '-1.0' }}"
+      - condition: template
+        value_template: "{{ states('input_boolean.matrix_mode_saturation_visibility') == 'on' }}"
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: WiFiPanel-0/cmd
+          payload_template: >
+            $8 1 {{ states('input_number.matrix_mode_number') | int }} {{ states('input_number.matrix_mode_saturation')|int }};
+
+
+  - alias: Настройки режимів ефекту "Веселка"
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_select.matrix_rainbow_effect_variant
+    condition:
+      - condition: template
+        value_template: "{{ states('input_number.matrix_mode_number') == '4.0' }}"
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: WiFiPanel-0/cmd
+          payload_template: >
+            {% if states('input_select.matrix_rainbow_effect_variant') == "Вертикально" %}
+            $8 3 4 1;
+            {% elif states('input_select.matrix_rainbow_effect_variant') == "Горизонтально" %}
+            $8 3 4 2;
+            {% elif states('input_select.matrix_rainbow_effect_variant') == "Діагонально" %}
+            $8 3 4 3;
+            {% elif states('input_select.matrix_rainbow_effect_variant') == "По колу" %}
+            $8 3 4 4;
+            {% else %}
+            $8 3 4 0;
+            {% endif %}
+
+
+  - alias: Настройки режимів ефекту "Стрілки"
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_select.matrix_arrows_effect_variant
+    condition:
+      - condition: template
+        value_template: "{{ states('input_number.matrix_mode_number') == '38.0' }}"
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: WiFiPanel-0/cmd
+          payload_template: >
+            {% if states('input_select.matrix_arrows_effect_variant') == "1-центр" %}
+            $8 3 38 1;
+            {% elif states('input_select.matrix_arrows_effect_variant') == "2-центр" %}
+            $8 3 38 2;
+            {% elif states('input_select.matrix_arrows_effect_variant') == "4-центр" %}
+            $8 3 38 3;
+            {% elif states('input_select.matrix_arrows_effect_variant') == "2-зміщення" %}
+            $8 3 38 4;
+            {% elif states('input_select.matrix_arrows_effect_variant') == "4-зміщення" %}
+            $8 3 38 5;
+            {% else %}
+            $8 3 38 0;
+            {% endif %}
+
+  - alias: Настройки режимів ефекту "Анімація"
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_select.matrix_animation_effect_variant
+    condition:
+      - condition: template
+        value_template: "{{ states('input_number.matrix_mode_number') == '39.0' }}"
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: WiFiPanel-0/cmd
+          payload_template: >
+            {% if states('input_select.matrix_animation_effect_variant') == "Маріо" %}
+            $8 3 39 1;
+            {% else %}
+            $8 3 39 0;
+            {% endif %}
+
+  - alias: Настройки ефектів режиму "Узори"
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_select.matrix_patterns_effect_variant
+    condition:
+      - condition: template
+        value_template: "{{ states('input_number.matrix_mode_number') == '42.0' }}"
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: WiFiPanel-0/cmd
+          payload_template: >
+            {% if states('input_select.matrix_patterns_effect_variant') == "Зигзаг" %}
+            $8 3 42 1;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Ноти" %}
+            $8 3 42 2;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Ромб" %}
+            $8 3 42 3;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Серце" %}
+            $8 3 42 4;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Ялинка" %}
+            $8 3 42 5;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Клітка" %}
+            $8 3 42 6;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Смайлик" %}
+            $8 3 42 7;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Зигзаг 2" %}
+            $8 3 42 8;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Полоси" %}
+            $8 3 42 9;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Хвилі" %}
+            $8 3 42 10;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Луска" %}
+            $8 3 42 11;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Портьєра" %}
+            $8 3 42 12;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Плетінка" %}
+            $8 3 42 13;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Сніжинка" %}
+            $8 3 42 14;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Квадратики" %}
+            $8 3 42 15;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Греція" %}
+            $8 3 42 16;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Круги" %}
+            $8 3 42 17;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Рулет" %}
+            $8 3 42 18;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Узор 1" %}
+            $8 3 42 19;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Узор 2" %}
+            $8 3 42 20;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Узор 3" %}
+            $8 3 42 21;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Узор 4" %}
+            $8 3 42 22;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Узор 5" %}
+            $8 3 42 23;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Узор 6" %}
+            $8 3 42 24;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Узор 7" %}
+            $8 3 42 25;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Узор 8" %}
+            $8 3 42 26;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Узор 9" %}
+            $8 3 42 27;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Узор 10" %}
+            $8 3 42 28;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Узор 11" %}
+            $8 3 42 29;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Узор 12" %}
+            $8 3 42 30;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Узор 13" %}
+            $8 3 42 31;
+            {% elif states('input_select.matrix_patterns_effect_variant') == "Узор 14" %}
+            $8 3 42 32;
+            {% else %}
+            $8 3 42 0;
+            {% endif %}
+
+  - alias: set_matrix_mode_segments
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_boolean.matrix_mode_segments
+    condition:
+      - condition: template
+        value_template: "{{ states('input_number.matrix_mode_number') != '-1.0' }}"
+      - condition: template
+        value_template: "{{ states('input_boolean.matrix_mode_segments_visibility') == 'on' }}"
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: WiFiPanel-0/cmd
+          payload_template: >
+            {%- if states('input_boolean.matrix_mode_segments') == 'on' -%}
+            $8 3 {{ states('input_number.matrix_mode_number') | int }} 1;
+            {%- else -%}
+            $8 3 {{ states('input_number.matrix_mode_number') | int }} 0;
+            {%- endif -%}

@@ -1,0 +1,188 @@
+###################################   МАТРИЦЯ   #################################
+
+  matrix_brightness:
+    name: Яскравість гірлянди
+    min: 1
+    max: 255
+    step: 1
+    
+  matrix_current_limit:
+    name: Ліміт по струму
+    min: 1000
+    max: 3000
+    step: 100
+    
+  matrix_effect_duration:
+    name: Тривалість режиму
+    min: 5
+    max: 120
+    step: 1
+    
+  matrix_auto_mode_in:
+    name: Авторежим через
+    min: 0
+    max: 90
+    step: 1
+    
+  matrix_weather_update_period:
+    name: Інтерв. оновлення
+    min: 5
+    max: 90
+    step: 5
+
+###################################   ЕФЕКТИ   #################################
+
+  matrix_mode_number:
+    name: Номер ефекту
+    min: -1
+    max: 50
+
+  matrix_mode_contrast:
+    name: Контраст
+    icon: "mdi:contrast-box"
+    min: 0
+    max: 255
+    step: 1
+
+  matrix_mode_speed:
+    name: Швидкість
+    icon: "mdi:speedometer"
+    min: 0
+    max: 255
+    step: 1
+
+  matrix_mode_variant:
+    name: Варіант
+    icon: "mdi:format-list-checkbox"
+    min: 0
+    max: 255
+    step: 1
+
+
+  matrix_mode_color:
+    name: Колір
+    icon: "mdi:palette"
+    min: 0
+    max: 255
+    step: 1
+
+  matrix_mode_saturation:
+    name: Насиченість
+    icon: "mdi:image-filter-vintage"
+    min: 0
+    max: 255
+    step: 1
+
+###################################   БІЖУЧА СТРОКА   #################################
+
+  matrix_running_text_interval:
+    name: Інтервал, 10-600
+    min: 10
+    max: 600
+    step: 5
+
+  matrix_running_text_speed:
+    name: Швидкість, 0-255
+    min: 1
+    max: 255
+    step: 1
+
+  matrix_running_text_color_red:
+    name: Червоний
+    min: 1
+    max: 255
+    step: 1
+
+  matrix_running_text_color_green:
+    name: Зелений
+    min: 1
+    max: 255
+    step: 1
+
+  matrix_running_text_color_blue:
+    name: Синій
+    min: 1
+    max: 255
+    step: 1
+
+###################################   НАЛАШТУВАННЯ ГОДИННИКА   #################################
+
+  matrix_clock_ntp_sync_period:
+    name: "Інтервал"
+    min: 10
+    max: 180
+    step: 5
+
+  matrix_clock_timezone:
+    name: "Часовий пояс"
+    min: 0
+    max: 23
+    step: 1
+
+  matrix_clock_date_duration:
+    name: "На"
+    min: 1
+    max: 60
+    step: 1
+
+  matrix_clock_date_interval:
+    name: "Через кожні"
+    min: 5
+    max: 300
+    step: 5
+
+  matrix_clock_speed:
+    name: "Швидкість"
+    min: 1
+    max: 255
+    step: 1
+
+###################################   РЕЖИМИ ПО ЧАСУ   #################################
+
+  matrix_time_mode_1_hours:
+    name: "Година"
+    min: 0
+    max: 23
+    step: 1
+
+  matrix_time_mode_1_minutes:
+    name: "Хвилина"
+    min: 0
+    max: 59
+    step: 1
+
+  matrix_time_mode_2_hours:
+    name: "Година"
+    min: 0
+    max: 23
+    step: 1
+
+  matrix_time_mode_2_minutes:
+    name: "Хвилина"
+    min: 0
+    max: 59
+    step: 1
+
+  matrix_time_mode_3_hours:
+    name: "Година"
+    min: 0
+    max: 23
+    step: 1
+
+  matrix_time_mode_3_minutes:
+    name: "Хвилина"
+    min: 0
+    max: 59
+    step: 1
+
+  matrix_time_mode_4_hours:
+    name: "Година"
+    min: 0
+    max: 23
+    step: 1
+
+  matrix_time_mode_4_minutes:
+    name: "Хвилина"
+    min: 0
+    max: 59
+    step: 1

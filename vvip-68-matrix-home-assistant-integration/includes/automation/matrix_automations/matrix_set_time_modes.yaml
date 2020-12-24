@@ -1,0 +1,86 @@
+# Настройка режимів по часу
+  - alias: matrix_set_time_modes
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_number.matrix_time_mode_1_hours
+      - platform: state
+        entity_id: input_number.matrix_time_mode_2_hours
+      - platform: state
+        entity_id: input_number.matrix_time_mode_3_hours
+      - platform: state
+        entity_id: input_number.matrix_time_mode_4_hours
+      - platform: state
+        entity_id: input_number.matrix_time_mode_1_minutes
+      - platform: state
+        entity_id: input_number.matrix_time_mode_2_minutes
+      - platform: state
+        entity_id: input_number.matrix_time_mode_3_minutes
+      - platform: state
+        entity_id: input_number.matrix_time_mode_4_minutes
+      - platform: state
+        entity_id: input_select.matrix_time_mode_1_action
+      - platform: state
+        entity_id: input_select.matrix_time_mode_2_action
+      - platform: state
+        entity_id: input_select.matrix_time_mode_3_action
+      - platform: state
+        entity_id: input_select.matrix_time_mode_4_action
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: WiFiPanel-0/cmd
+          payload_template: >
+            $22
+            {{ "%02d" % states('input_number.matrix_time_mode_1_hours') | int }}
+            {{ "%02d" % states('input_number.matrix_time_mode_1_minutes') | int }}
+            {%- if states('input_select.matrix_time_mode_1_action') == "Вимкнути матрицю" %}
+            -2
+            {%- elif states('input_select.matrix_time_mode_1_action') == "Нічний годинник" %}
+            -1
+            {%- elif states('input_select.matrix_time_mode_1_action') == "Демо-режим" %}
+            0
+            {%- elif states('input_select.matrix_time_mode_1_action') == "Годинник" %}
+            1
+            {%- else %}
+            -3
+            {%- endif %}
+            {{ "%02d" % states('input_number.matrix_time_mode_2_hours') | int }}
+            {{ "%02d" % states('input_number.matrix_time_mode_2_minutes') | int }}
+            {%- if states('input_select.matrix_time_mode_2_action') == "Вимкнути матрицю" %}
+            -2
+            {%- elif states('input_select.matrix_time_mode_2_action') == "Нічний годинник" %}
+            -1
+            {%- elif states('input_select.matrix_time_mode_2_action') == "Демо-режим" %}
+            0
+            {%- elif states('input_select.matrix_time_mode_2_action') == "Годинник" %}
+            1
+            {%- else %}
+            -3
+            {%- endif %}
+            {{ "%02d" % states('input_number.matrix_time_mode_3_hours') | int }}
+            {{ "%02d" % states('input_number.matrix_time_mode_3_minutes') | int }}
+            {%- if states('input_select.matrix_time_mode_3_action') == "Вимкнути матрицю" %}
+            -2
+            {%- elif states('input_select.matrix_time_mode_3_action') == "Нічний годинник" %}
+            -1
+            {%- elif states('input_select.matrix_time_mode_3_action') == "Демо-режим" %}
+            0
+            {%- elif states('input_select.matrix_time_mode_3_action') == "Годинник" %}
+            1
+            {%- else %}
+            -3
+            {%- endif %}
+            {{ "%02d" % states('input_number.matrix_time_mode_4_hours') | int }}
+            {{ "%02d" % states('input_number.matrix_time_mode_4_minutes') | int }}
+            {%- if states('input_select.matrix_time_mode_4_action') == "Вимкнути матрицю" %}
+            -2;
+            {%- elif states('input_select.matrix_time_mode_4_action') == "Нічний годинник" %}
+            -1;
+            {%- elif states('input_select.matrix_time_mode_4_action') == "Демо-режим" %}
+            0;
+            {%- elif states('input_select.matrix_time_mode_4_action') == "Годинник" %}
+            1;
+            {%- else %}
+            -3;
+            {%- endif %}

@@ -1,0 +1,43 @@
+{
+    "version": 1,
+    "key": "lovelace",
+    "data": {
+        "config": {
+            "title": "My Home",
+            "views": [
+                {
+                    "path": "default_view",
+                    "title": "Home",
+                    "panel": false,
+                    "badges": [
+                        {
+                            "entity": "binary_sensor.rpi_power_status"
+                        },
+                        {
+                            "entity": "person.taras_panchyshyn"
+                        },
+                        {
+                            "entity": "sensor.disk_free"
+                        },
+                        {
+                            "entity": "sensor.memory_use_percent"
+                        },
+                        {
+                            "entity": "sensor.processor_use_percent"
+                        },
+                        {
+                            "entity": "sensor.time_date"
+                        }
+                    ],
+                    "cards": [
+                        {
+                            "type": "weather-forecast",
+                            "entity": "weather.my_home",
+                            "secondary_info_attribute": "humidity"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

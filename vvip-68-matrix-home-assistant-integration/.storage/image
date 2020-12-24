@@ -1,0 +1,15 @@
+{
+    "version": 1,
+    "key": "image",
+    "data": {
+        "items": [
+            {
+                "id": "60e683b1d9aca9515194968b031d521e",
+                "filesize": 69416,
+                "content_type": "image/jpeg",
+                "name": "IMG_2242.jpg",
+                "uploaded_at": "2020-11-23T13:35:07.165059+00:00"
+            }
+        ]
+    }
+}

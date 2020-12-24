@@ -1,0 +1,228 @@
+{
+    "version": 1,
+    "key": "auth",
+    "data": {
+        "users": [
+            {
+                "id": "9334b246a830489c9ff5d23df403a598",
+                "group_ids": [
+                    "system-admin"
+                ],
+                "is_owner": false,
+                "is_active": true,
+                "name": "Hass.io",
+                "system_generated": true
+            },
+            {
+                "id": "50cd046f9d96462385a8c1f807e827ca",
+                "group_ids": [
+                    "system-admin"
+                ],
+                "is_owner": true,
+                "is_active": true,
+                "name": "Taras Panchyshyn",
+                "system_generated": false
+            },
+            {
+                "id": "ccd29dbd1edc4802bcb22a98de127f59",
+                "group_ids": [
+                    "system-users"
+                ],
+                "is_owner": false,
+                "is_active": true,
+                "name": "Halyna Panchyshyn",
+                "system_generated": false
+            }
+        ],
+        "groups": [
+            {
+                "id": "system-admin",
+                "name": "Administrators"
+            },
+            {
+                "id": "system-users",
+                "name": "Users"
+            },
+            {
+                "id": "system-read-only",
+                "name": "Read Only"
+            }
+        ],
+        "credentials": [
+            {
+                "id": "55ee3b3555a74096b5b39b63559a46c9",
+                "user_id": "50cd046f9d96462385a8c1f807e827ca",
+                "auth_provider_type": "homeassistant",
+                "auth_provider_id": null,
+                "data": {
+                    "username": "taras"
+                }
+            },
+            {
+                "id": "6fdd3b6bca77441b818a58b7d49ac9d1",
+                "user_id": "ccd29dbd1edc4802bcb22a98de127f59",
+                "auth_provider_type": "homeassistant",
+                "auth_provider_id": null,
+                "data": {
+                    "username": "halyna98"
+                }
+            }
+        ],
+        "refresh_tokens": [
+            {
+                "id": "763fa12bd517407e805486df0f61edfc",
+                "user_id": "9334b246a830489c9ff5d23df403a598",
+                "client_id": null,
+                "client_name": null,
+                "client_icon": null,
+                "token_type": "system",
+                "created_at": "2020-11-23T12:45:29.935531+00:00",
+                "access_token_expiration": 1800.0,
+                "token": "9bd6771fb638e678321268bc7c72fbfd71e6b56febdd51676695463b195f395196f1126d0a2226e56489f13fbb9ea90cf707a60f2ba591a0b2fbc7caca6fe4af",
+                "jwt_key": "5972bf39b5c53a8c1a5d40e5cffff9c47d19ea0b8dd04d1c7d934880a50cc36849d190cb6d22073f570e86f238457e06d4dba5f966fec84ec07dff8343ad0ec9",
+                "last_used_at": "2020-12-24T10:29:29.386371+00:00",
+                "last_used_ip": "172.30.32.2"
+            },
+            {
+                "id": "73e26c17a423430d937f7fcf9eacf8f1",
+                "user_id": "50cd046f9d96462385a8c1f807e827ca",
+                "client_id": "https://home-assistant.io/iOS",
+                "client_name": null,
+                "client_icon": null,
+                "token_type": "normal",
+                "created_at": "2020-12-02T14:40:13.854837+00:00",
+                "access_token_expiration": 1800.0,
+                "token": "ecdca2a9d3ee65c3a72f5d0d8036e2ef38094126709e0eb912fc727bc28dd243b4484b77db363d4cba6c95d67e40d3f4512854a041d10880670c8887da3888cb",
+                "jwt_key": "4771da96ec9de2014abbbc53c33a58c581ab1e8fa2b3789ebbf1530eff5bc7a12b1e5a3ccc444ad3f0893fb74f44c9a3e7d66771d0973221b510a1f7b8e6d146",
+                "last_used_at": "2020-12-24T10:25:59.575030+00:00",
+                "last_used_ip": "192.168.1.1"
+            },
+            {
+                "id": "21a7e1acee3c400691d43981d14db4c8",
+                "user_id": "50cd046f9d96462385a8c1f807e827ca",
+                "client_id": "https://homeassistant.keenetic-3g.keenetic.pro/",
+                "client_name": null,
+                "client_icon": null,
+                "token_type": "normal",
+                "created_at": "2020-12-05T13:51:56.236364+00:00",
+                "access_token_expiration": 1800.0,
+                "token": "88885dc42c4429e185f89a43e7b5a8e86e98f67f7181cf4bc37013747860f49fed1fba3462a24ae4fb066059cd5b5c1d9a17d2e4ed6c2c3c7fed09acc57e5694",
+                "jwt_key": "393eda8adc94b0e93f11d93b7aaca6c4105c5b2904adf9e552ecc9ec09fd7432231f63d9ee0ee48f61fdbd118228a269b59f1821a57819512b3dbacf336386cd",
+                "last_used_at": "2020-12-22T14:33:56.112079+00:00",
+                "last_used_ip": "192.168.1.1"
+            },
+            {
+                "id": "95faad8a483a4313bb7fb3d7ec18cf37",
+                "user_id": "50cd046f9d96462385a8c1f807e827ca",
+                "client_id": "http://192.168.1.100:8123/",
+                "client_name": null,
+                "client_icon": null,
+                "token_type": "normal",
+                "created_at": "2020-12-12T13:00:43.919274+00:00",
+                "access_token_expiration": 1800.0,
+                "token": "88f840ca446f42ccbb71fd2d33c9d1e1e2f4aa804e1aee00c9c00ef523742137e698990fd3d4bfaf758c49125c4730dba29b2e5be4ea161c89ac92d4f14e3a45",
+                "jwt_key": "38f9c7fb04f2464ad6fbf3501891988a02b6c2310d87cf6e1ef65d39d5a5c68a038656e7cb699e17adcbde142823b933a4bcfafe93d624f3078c7a5f76968896",
+                "last_used_at": "2020-12-24T10:24:59.547367+00:00",
+                "last_used_ip": "192.168.1.1"
+            },
+            {
+                "id": "5505cc94526a4782ab9945c6a899ede5",
+                "user_id": "50cd046f9d96462385a8c1f807e827ca",
+                "client_id": "https://homeassistant.keenetic-3g.keenetic.pro/",
+                "client_name": null,
+                "client_icon": null,
+                "token_type": "normal",
+                "created_at": "2020-12-12T13:01:03.649755+00:00",
+                "access_token_expiration": 1800.0,
+                "token": "54fcdb910866709f2a402966a70101b12a51e7dc6098dfe4bb7d8236454ed0b6e194a612f85f9723b951201d04d455c3d221621316c0d9e6ee461b876b072c3e",
+                "jwt_key": "743172813b3ba88a1347ba7f350798bfea607ddf0befc66f5fb8296f56f7ca69d447d853a260ba2605aa850bf431c937f43d38b2b33b1b4337f347cb3a443faa",
+                "last_used_at": "2020-12-24T10:23:45.259803+00:00",
+                "last_used_ip": "192.168.1.1"
+            },
+            {
+                "id": "b99a5deacb294d869b87a1b7ea81a3a0",
+                "user_id": "50cd046f9d96462385a8c1f807e827ca",
+                "client_id": "http://192.168.1.100:8123/",
+                "client_name": null,
+                "client_icon": null,
+                "token_type": "normal",
+                "created_at": "2020-12-19T10:39:49.218430+00:00",
+                "access_token_expiration": 1800.0,
+                "token": "ffa55295aa3eaf21efac0a0e6702ea7ef905771179d9137380c5587f88d7d156a89e9257babe21c09201371f053c1136d1b0b836f6d4bdd456cf5e9e75a9d881",
+                "jwt_key": "fbfb2cbaa4eaabbcb88991ebd2611c99b443b514eb7807d53f9a0e76c64379212faceb42841174ebf9585538240a94604b86cb92fc6c6503d0c79f33e10831bc",
+                "last_used_at": "2020-12-19T10:39:49.218783+00:00",
+                "last_used_ip": "192.168.1.138"
+            },
+            {
+                "id": "fd737bedf7724380a1eaca1f12fc90b4",
+                "user_id": "50cd046f9d96462385a8c1f807e827ca",
+                "client_id": "https://homeassistant.keenetic-3g.keenetic.pro/",
+                "client_name": null,
+                "client_icon": null,
+                "token_type": "normal",
+                "created_at": "2020-12-19T13:30:55.975113+00:00",
+                "access_token_expiration": 1800.0,
+                "token": "ddcd61deda140a34b7af749c69c86a237772d014d179e7ded9085e2138a1acdc0af73d40bbda8e4cc932367d05766ad7b961f6fa3d7e317e7b48fab301118912",
+                "jwt_key": "db9fe762eaf954d62c4468d60d02d6699aa1c7e3727a993412c9a9f844cc8ba2043c3d3051ae36e6d40ed1feda9c7b8461e0c9ba95cfb4110093acffee5d602d",
+                "last_used_at": "2020-12-19T13:30:55.975461+00:00",
+                "last_used_ip": "192.168.1.1"
+            },
+            {
+                "id": "0336f7b928164513b2d2c2332c9ac7fa",
+                "user_id": "50cd046f9d96462385a8c1f807e827ca",
+                "client_id": "https://homeassistant.keenetic-3g.keenetic.pro/",
+                "client_name": null,
+                "client_icon": null,
+                "token_type": "normal",
+                "created_at": "2020-12-22T10:35:48.891178+00:00",
+                "access_token_expiration": 1800.0,
+                "token": "88d07ba3149812193d5ecec215fd2cd6be706bd73e7aa29d96b585e26c0aaed2436ca651c5a67ce749fdc737b3852489613aed3653131d636b9afc9d02eb48f5",
+                "jwt_key": "596ad9256cbb5c1027c57af72b5cfc4ae985b77453608d98b405e94bcc9f7c27f4c44908a705d5b1e43583a9a67614b4ed6e5eae9c63f9d880962d7dfd5d3484",
+                "last_used_at": "2020-12-22T10:35:48.891841+00:00",
+                "last_used_ip": "192.168.1.1"
+            },
+            {
+                "id": "9d4a1847938b4affbe2d1765446b8b9c",
+                "user_id": "50cd046f9d96462385a8c1f807e827ca",
+                "client_id": "https://homeassistant.keenetic-3g.keenetic.pro/",
+                "client_name": null,
+                "client_icon": null,
+                "token_type": "normal",
+                "created_at": "2020-12-22T10:41:15.067632+00:00",
+                "access_token_expiration": 1800.0,
+                "token": "80185a87f226daaa3e55d883e16f1b7b19c163ab8ba9acb8f772839444cff3c046012b5287791100f0f7c16648488ffd47e36bc85409de6633c5d138952ba4cb",
+                "jwt_key": "0a2f630f8bc533a190294eae41c1eecebd6af4e5f13c7b809bdc821d7b49d943f88a456de174766b174364296eac2ccff121897270dd5da6abd0e7438cf0ff69",
+                "last_used_at": "2020-12-22T10:41:15.068042+00:00",
+                "last_used_ip": "192.168.1.1"
+            },
+            {
+                "id": "eaf216d19a7e4c638402f9215474cb95",
+                "user_id": "50cd046f9d96462385a8c1f807e827ca",
+                "client_id": "https://homeassistant.keenetic-3g.keenetic.pro/",
+                "client_name": null,
+                "client_icon": null,
+                "token_type": "normal",
+                "created_at": "2020-12-22T10:43:53.359571+00:00",
+                "access_token_expiration": 1800.0,
+                "token": "109c6c494e56afeba1300e3789850a07fc95788d3251fc893c48fb9c554ba448704035bf78c1bc1d237a1421a1844306f28ba0211ed2f9836738252e6bdcb6f6",
+                "jwt_key": "67b9a35b819f3d7f3e0c4ec625c1dda278ae4f3fb983d0c37a03ecc87ceb5b89f94835ea3fff12bd6b649115709d7789a7a1b7aaec6a0bafe8e3697319e72ae5",
+                "last_used_at": "2020-12-22T10:43:53.359947+00:00",
+                "last_used_ip": "192.168.1.1"
+            },
+            {
+                "id": "9ae0917e940d43528d606fcfc16ff60a",
+                "user_id": "ccd29dbd1edc4802bcb22a98de127f59",
+                "client_id": "https://home-assistant.io/iOS",
+                "client_name": null,
+                "client_icon": null,
+                "token_type": "normal",
+                "created_at": "2020-12-06T21:29:50.900437+00:00",
+                "access_token_expiration": 1800.0,
+                "token": "d287c7e8734a1d0dc0a1a6e8227f7a54957c9a040dfee530eb535ba0a8ae618c0b371132e981bc7b11dfccd287a0e094ee955d953b26e07d906b9020565605c7",
+                "jwt_key": "95d42569a2ce52a89c9baab5c9233077c20fbdb3b23b0c7581ce4f9bbc5808e34510831aef023cf7e5c6e77241ad2b22a00a7521e6db6509b72fd666084203a0",
+                "last_used_at": "2020-12-24T09:56:24.558178+00:00",
+                "last_used_ip": "fe80::c4:7123:27e6:857a"
+            }
+        ]
+    }
+}

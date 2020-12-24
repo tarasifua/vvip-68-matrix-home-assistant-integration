@@ -508,13 +508,13 @@
       - condition: template
         value_template: "{{ states('input_number.matrix_mode_number') != '-1.0' }}"
       - condition: template
-        value_template: '{{ trigger.payload.split(">")[0] == "С" }}'
+        value_template: '{{ trigger.payload.split(">")[0] == "C" }}'
     action:
       - service_template: >
           {% if trigger.payload.split(">")[1] == "1" %}
-          input_boolean.turn_off
-          {% else %}
           input_boolean.turn_on
+          {% else %}
+          input_boolean.turn_off
           {% endif %}
         data:
           entity_id: input_boolean.matrix_mode_segments

@@ -3,7 +3,7 @@
 Данная интеграция построена на наборе автоматизаций для Home Assistant и позволяет управлять матрицей а также настраивать большую часть параметров.
 
 ### Внешний вид
-(https://github.com/tarasifua/vvip-68-matrix-home-assistant-integration/blob/main/screenshot/screenshot.png?raw=true)
+[](https://github.com/tarasifua/vvip-68-matrix-home-assistant-integration/blob/main/screenshot/screenshot.png?raw=true)
 ### Установка
 
 В свой файл `configuration.yaml` внести строки, которые есть в одноименном файле в репозитории. Если у вас уже есть подключенные файлы `input_boolean`, `input_number`,  `input_text`,  `input_select` или `script`, перенести содержимое этих файлов в свои.

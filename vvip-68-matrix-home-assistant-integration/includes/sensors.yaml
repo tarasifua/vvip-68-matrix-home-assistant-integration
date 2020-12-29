@@ -1,0 +1,3 @@
+  - platform: mqtt
+    name: "Поточний ефект"
+    state_topic: "WiFiPanel-0/stt/EN"

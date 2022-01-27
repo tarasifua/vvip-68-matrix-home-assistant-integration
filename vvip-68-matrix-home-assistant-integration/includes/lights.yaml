@@ -1,0 +1,53 @@
+  - platform: template
+    lights:
+      matrix:
+        friendly_name: "Matrix"
+        icon_template: 'mdi:dots-grid'
+        level_template: "{{ states('input_number.matrix_brightness') }}"
+        value_template: "{{ states('input_boolean.matrix_switch_state') }}"
+        effect_list_template: "{{ states.input_select.show_effects_settings.attributes.options | list }}"
+        effect_template: "{{ states.input_select.show_effects_settings.state }}"
+        color_template: "({{ ((states.input_number.matrix_mode_color.state | int)/0.708) | round }}, {{ ((states.input_number.matrix_mode_saturation.state | int)/2.55) | round }})"
+        turn_on:
+          service: input_boolean.turn_on
+          data: 
+            entity_id: input_boolean.matrix_switch_state
+        turn_off:
+          service: input_boolean.turn_off
+          data: 
+            entity_id: input_boolean.matrix_switch_state
+        set_level:
+          service: input_number.set_value
+          data_template:
+            entity_id: input_number.matrix_brightness
+            value: "{{ brightness }}"
+        set_effect:
+          service: input_select.select_option
+          data_template:
+            entity_id: input_select.show_effects_settings
+            option: "{{ effect }}"            
+        set_color:
+          - service: input_number.set_value
+            data_template:
+              entity_id: input_number.matrix_mode_color
+              value: "{{ ((h | int)*0.708) | round }}"          
+          - service: input_number.set_value
+            data_template:
+              entity_id: input_number.matrix_mode_saturation
+              value: "{{ ((h | int)*2.55) | round }}"          
+          - service: light.turn_on
+            target:
+              entity_id: light.matrix
+            data_template:
+              hs_color: 
+                - "{{ h }}"
+                - "{{ s }}"         
+          - service: mqtt.publish
+            data_template:
+              topic: WifiPanel-0/cmd
+              payload_template: "$5 0 {{ '%02x' % ((states.light.matrix.attributes.rgb_color | string).split(',')[0][1:]) | int }}{{ '%02x' % ((states.light.matrix.attributes.rgb_color | string).split(',')[1]) | int }}{{ '%02x' % ((states.light.matrix.attributes.rgb_color | string).split(',')[2][1:][:-1]) | int }};"
+          - delay: 00:00:01
+          - service: mqtt.publish
+            data_template:
+              topic: WifiPanel-0/cmd
+              payload_template: "$5 2;"
